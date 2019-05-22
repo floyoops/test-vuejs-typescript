@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Counter :prop-message="localHomeMessage"></Counter>
+    <Counter :prop-counter-message="ObjectHomeMessage"></Counter>
   </div>
 </template>
 
@@ -8,20 +8,26 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Counter  from '@/components/Counter'
 
+export type MessageT = {
+  message: string
+}
+
 @Component({
   components: {
     Counter,
   }
 })
+
+
 export default class Home extends Vue {
-  localHomeMessage = 'message of home'
+  // data (Object required for observer)
+  ObjectHomeMessage: MessageT = {'message': 'message init'}
 
   mounted() {
-    console.log('mounted home', this.localHomeMessage)
     let count = 0
     setInterval(() => {
       count = count + 1
-      this.localHomeMessage = 'message ' + count
+      this.ObjectHomeMessage.message = 'message ' + count
     }, 1000)
   }
 }

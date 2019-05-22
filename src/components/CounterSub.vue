@@ -1,21 +1,21 @@
 <template>
     <div class="counterSub">
         <h1>counter sub</h1>
-        <div>propCounterSubMessage: {{ propCounterSubMessage }}</div>
-        <div>localCounterSubMessage: {{ localCounterSubMessage }}</div>
+        <div>propCounterSubMessage: {{ propCounterSubMessage.message }}</div>
+        <div>localCounterSubMessage: {{ localCounterSubMessage.message }}</div>
     </div>
 </template>
 
 <script lang="ts">
 import {Component, Prop, Vue} from "vue-property-decorator";
+import {MessageT} from '@/views/Home.vue';
 
 @Component
 export default class CounterSub extends Vue {
-    @Prop(String) propCounterSubMessage: string
-    localCounterSubMessage = this.propCounterSubMessage
+    // props
+    @Prop(Object) propCounterSubMessage: MessageT
 
-    mounted() {
-        console.log('mounted localCounterSubMessage')
-    }
+    // data
+    localCounterSubMessage: MessageT = this.propCounterSubMessage
 }
 </script>
