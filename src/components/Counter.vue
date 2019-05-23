@@ -5,7 +5,7 @@
         <div>localCounterMessage: {{ localCounterMessage.message }}</div>
         <div>greet: {{ greet() }}</div>
         <div>computed: {{ greetComputed }}</div>
-        <CounterSub :prop-counter-sub-message="localCounterMessage"></CounterSub>
+        <CounterSub :prop-counter-sub-message="localCounterMessage" :prop-people="localCounterMessage.people"></CounterSub>
     </div>
 </template>
 
